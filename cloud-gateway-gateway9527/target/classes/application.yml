@@ -1,0 +1,47 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启动态路由
+      routes: #配置路由
+        - id: payment_routh # 路由的id，没有固定的要求，建议配合服务名
+          # uri: http://localhost:8001 # 匹配后提供服务的路由地址
+          uri: lb://CLOUD-PAYMENT-SERVICE # 匹配后提供服务的动态路由地址
+          predicates:
+            - Path=/payment/get/** # 断言路径匹配的进行你路由
+        - id: payment_routh2 # 路由的id，没有固定的要求，建议配合服务名
+          # uri: http://localhost:8001 # 匹配后提供服务的路由地址
+          uri: lb://CLOUD-PAYMENT-SERVICE # 匹配后提供服务的动态路由地址
+          predicates:
+            - Path=/payment/lb/** # 断言路径匹配的进行你路由
+            #- After=2020-06-24T13:42:24.946+08:00[Asia/Shanghai] # 在规定时间之后才能访问
+            #- Before=2020-06-24T13:50:24.946+08:00[Asia/Shanghai] # 在规定时间之前才能访问
+            # 属性值和一个正则表达式
+            # - Cookie=username,lisi # cmd下面curl测试 : curl http://localhost:9527/payment/lb --cookie "username=lisi"
+            # 属性值和一个正则表达式
+            #请求有一个名为X-Request-Id的头，其值为正整数
+            #- Header=X-Request-Id, \d+  #curl http://localhost:9527/payment/lb -H "X-Request-Id:50"
+        - id: payment_routh2 # 路由的id，没有固定的要求，建议配合服务名
+          # uri: http://localhost:8001 # 匹配后提供服务的路由地址
+          uri: lb://CLOUD-PAYMENT-SERVICE # 匹配后提供服务的动态路由地址
+          predicates:
+            - Path=/get/token/** # 断言路径匹配的进行你路由
+eureka:
+  client:
+    #是否开启检索服务
+    fetch-registry: true
+    #是否在注册中心注册自己
+    register-with-eureka: true
+    service-url:
+      # 设置与eureka server交互的地址检查服务和注册服务都需要这个以来的地址
+      # defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: cloud-gateway-service
+    prefer-ip-address: true

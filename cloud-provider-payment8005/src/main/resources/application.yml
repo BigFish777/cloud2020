@@ -1,0 +1,36 @@
+server:
+  port: 8005
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: cloud-payment-service # 微服务的名字
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.105.27.58/spring_cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
+    username: root
+    password: lovehxp521..
+  #微服务的配置
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+
+management:
+  endpoint:
+    health:
+      show-details: always
+
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+
+# mybatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.atguigu.springcloud.entities
