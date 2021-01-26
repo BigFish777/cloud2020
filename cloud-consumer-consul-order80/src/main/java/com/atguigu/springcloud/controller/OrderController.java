@@ -41,19 +41,19 @@ public class OrderController {
     private DiscoveryClient discoveryClient;
 
     @GetMapping("/consumer/payment/get")
-    public CommonResult<Parameter> getPayment(){
+    public CommonResult getPayment(){
         log.info("consumer:查询<Payment>成功!");
         return restTemplate.getForObject(PAYMENT_URL+"/payment/uuid",CommonResult.class);
     }
 
     @GetMapping("/consumer/payment/getForEntity")
-    public CommonResult<Parameter> getPayment2(){
+    public CommonResult getPayment2(){
         log.info("consumer:查询<getPayment2>成功!");
         ResponseEntity<CommonResult> forEntity = restTemplate.getForEntity(PAYMENT_URL + "/payment/uuid", CommonResult.class);
         if (forEntity.getStatusCode().is2xxSuccessful()){
            return forEntity.getBody();
         }else {
-            return new CommonResult(444,"操作失败");
+            return CommonResult.error("操作失败");
         }
     }
 

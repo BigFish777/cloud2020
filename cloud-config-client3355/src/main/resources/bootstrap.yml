@@ -15,7 +15,8 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://localhost:7001/eureka/
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
 
 # 暴露监端点
 management:
@@ -26,3 +27,6 @@ management:
       exposure:
         include: "*" # 打开全部的请求端点 refresh,health,info 。。。
       base-path: / #默认是 /actuator
+
+# 因为我们配置base-path:/,所以省略 actuator
+# 刷新地址：http://localhost:3355/refresh

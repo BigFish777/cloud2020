@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * \* Created with IntelliJ IDEA.
  * \* User: 一颗小土豆
@@ -22,16 +25,28 @@ import reactor.core.publisher.Mono;
 @Component
 @Slf4j
 public class MyLogGateWayFilter implements GlobalFilter, Ordered {
+
+    private List<String> releaseAddress = new ArrayList<>();
+
+    public List<String> getReleaseAddress(){
+        releaseAddress.add("/get/token");
+        return releaseAddress;
+    }
+
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
         String path = request.getPath().toString();
         log.info("path");
-        if (path.equals("/get/token")){
-            log.info("获取token，放行！");
-            return chain.filter(exchange);
+        List<String> list = getReleaseAddress();
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (list.get(i).equals(path)){
+                log.info("获取token，放行！");
+                return chain.filter(exchange);
+            }
         }
+
         String token = request.getHeaders().getFirst("Authorization");
         if (token == null){
             log.error("用户token为空，非法用户");

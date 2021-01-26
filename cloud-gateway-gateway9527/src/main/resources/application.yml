@@ -32,6 +32,10 @@ spring:
           uri: lb://CLOUD-PAYMENT-SERVICE # 匹配后提供服务的动态路由地址
           predicates:
             - Path=/get/token/** # 断言路径匹配的进行你路由
+        - id: payment_routh # 路由的id，没有固定的要求，建议配合服务名
+          uri: lb://SMARTPARK-SERVICE-ASSESS # 匹配后提供服务的动态路由地址
+          predicates:
+            - Path=/assess/plan/add/job/** # 断言路径匹配的进行你路由
 eureka:
   client:
     #是否开启检索服务
@@ -40,8 +44,8 @@ eureka:
     register-with-eureka: true
     service-url:
       # 设置与eureka server交互的地址检查服务和注册服务都需要这个以来的地址
-      # defaultZone: http://localhost:7001/eureka/
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://localhost:7001/eureka/
+      # defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
   instance:
     instance-id: cloud-gateway-service
     prefer-ip-address: true

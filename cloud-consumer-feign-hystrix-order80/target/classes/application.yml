@@ -22,12 +22,28 @@ ribbon:
   ReadTimeout: 5000
   # 指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间
   ConnectTimeout: 5000
+###配置请求超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+    ###配置具体方法超时时间
+    serverMethod:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+# 开启热部署启动支持
+###开启Hystrix断路器
+feign:
+  hystrix:
+    enabled: true
+
 # feign 开启日志增强
 logging:
   level:
     com.atguigu.springcloud.service.PaymentFeignService: debug
 
-# 开启热部署启动支持
-feign:
-  hystrix:
-    enabled: true

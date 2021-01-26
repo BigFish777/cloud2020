@@ -1,13 +1,13 @@
 package com.atguigu.springcloud.controller;
 
 import com.atguigu.springcloud.entities.CommonResult;
+import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentFeignService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Parameter;
+import java.util.UUID;
 
 /**
  * \* Created with IntelliJ IDEA.
@@ -22,8 +22,13 @@ public class PaymentFeignController {
     @Resource
     PaymentFeignService paymentFeignService;
 
+    @GetMapping("/payment/create")
+    public CommonResult createPayment(){
+        return paymentFeignService.createPayment(new Payment(null, UUID.randomUUID().toString()));
+    }
+
     @GetMapping("/consumer/paymentFeign/get/{id}")
-    public CommonResult<Parameter> getPayment(@PathVariable("id") Long id){
+    public CommonResult getPayment(@PathVariable("id") Long id){
         return paymentFeignService.getPaymentById(id);
     }
 

@@ -22,22 +22,22 @@ public class PaymentService {
 
     public CommonResult getPaymentById(@PathVariable("id") Long id){
         log.info(Thread.currentThread().getName()+"访问：/payment/get/"+id);
-        return new CommonResult(200,Thread.currentThread().getName()+"payment_ok,id:"+id,null);
+        return CommonResult.success(Thread.currentThread().getName()+"payment_ok,id:"+id,null);
     }
 
 
-    @HystrixCommand(fallbackMethod = "getPaymentTimeoutReserve",commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
-    })
+//    @HystrixCommand(fallbackMethod = "getPaymentTimeoutReserve",commandProperties = {
+//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
+//    })
     public CommonResult getPaymentTimeout(){
         log.info("进入PaymentTimeout");
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        int i = 1/0;
-        return new CommonResult<String>(200,Thread.currentThread().getName()+"payment_timeout",null);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+//        int i = 1/0;
+        return CommonResult.success(Thread.currentThread().getName()+"payment_timeout",null);
     }
 
     /**
@@ -46,23 +46,23 @@ public class PaymentService {
      */
     public CommonResult getPaymentTimeoutReserve(){
         log.info("进入备胎服务---成功降级！");
-        return new CommonResult<String>(200,Thread.currentThread().getName()+"--备胎启动.start---(┬＿┬)",null);
+        return CommonResult.success(Thread.currentThread().getName()+"--备胎启动.start---(┬＿┬)",null);
     }
 
 
     public CommonResult getPaymentTimeoutBT(){
         log.info("进入PaymentTimeout备胎服务！");
-        return new CommonResult<String>(200,Thread.currentThread().getName()+"payment_timeout_bt",null);
+        return CommonResult.success(Thread.currentThread().getName()+"payment_timeout_bt",null);
     }
 
     /****服务熔断****/
-    @HystrixCommand(fallbackMethod = "PaymentCircuitBreaker_fallback",commandProperties = {
+    @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback",commandProperties = {
             @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),//是否开启断路器
             @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"),//请求次数
             @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"),//时间窗口期
             @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "60"),//失败率达到多少，跳闸
     })
-    public String PaymentCircuitBreaker(@PathVariable("id") Long id){
+    public String paymentCircuitBreaker(@PathVariable("id") Long id){
         log.info("进入 PaymentCircuitBreaker");
         if (id<0){
             throw new RuntimeException("id 不能为负数！");
@@ -70,8 +70,10 @@ public class PaymentService {
         return Thread.currentThread().getName()+"流水号："+ IdUtil.simpleUUID();
     }
 
-    public String PaymentCircuitBreaker_fallback(@PathVariable("id") Long id){
-
+    /**
+     * PaymentCircuitBreaker的降级服务
+     */
+    public String paymentCircuitBreaker_fallback(@PathVariable("id") Long id){
         return "id 不能为负数，请稍后重试(┬＿┬)！";
     }
 

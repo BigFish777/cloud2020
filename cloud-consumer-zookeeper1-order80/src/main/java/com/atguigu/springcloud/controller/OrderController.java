@@ -26,7 +26,7 @@ public class OrderController {
     private RestTemplate restTemplate;
 
     @GetMapping("/consumer/payment/get")
-    public CommonResult<Parameter> getPayment(){
+    public CommonResult getPayment(){
         log.info("consumer:查询<Payment>成功!");
         return restTemplate.getForObject(PAYMENT_URL+"/payment/uuid",CommonResult.class);
     }

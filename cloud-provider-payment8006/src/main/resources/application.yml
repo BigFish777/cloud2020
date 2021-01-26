@@ -10,11 +10,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://39.105.27.58/spring_cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
     username: root
-    password: lovehxp521..
+    password: root
   #微服务的配置
   cloud:
     consul:
-      host: localhost
+      host: 39.105.27.58
       port: 8500
       discovery:
         service-name: ${spring.application.name}

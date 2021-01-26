@@ -1,0 +1,9 @@
+D:\work\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\service\PaymentFallbackServiceImpl.java
+D:\work\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\RunFeignHystrix80.java
+D:\work\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\controller\OrderFeignHystrixController.java
+D:\work\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\service\PaymentFeignHystrixService.java
+D:\work\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\controller\OrderConsumerController.java
+D:\work\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\service\OrderConsumerServiceFallbackImpl.java
+D:\work\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\test\EnumTest.java
+D:\work\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\config\FeignConfig.java
+D:\work\cloud2020\cloud-consumer-feign-hystrix-order80\src\main\java\com\atguigu\springcloud\service\OrderConsumerService.java

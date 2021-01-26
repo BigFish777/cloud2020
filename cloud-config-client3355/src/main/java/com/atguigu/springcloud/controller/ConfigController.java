@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConfigController {
 
     @Value("${config.info}")
-    private String StrInfo;
+    private String strInfo;
 
     @GetMapping("/get/str")
     public String getStrInfo(){
-        return StrInfo;
+        return strInfo;
     }
 }

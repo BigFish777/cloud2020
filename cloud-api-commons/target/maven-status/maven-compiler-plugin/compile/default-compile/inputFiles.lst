@@ -1,2 +1,7 @@
-E:\学习项目\Student\cloud2020\cloud-api-commons\src\main\java\com\atguigu\springcloud\entities\CommonResult.java
-E:\学习项目\Student\cloud2020\cloud-api-commons\src\main\java\com\atguigu\springcloud\entities\Payment.java
+D:\work\cloud2020\cloud-api-commons\src\main\java\com\atguigu\springcloud\entities\Payment.java
+D:\work\cloud2020\cloud-api-commons\src\main\java\com\atguigu\springcloud\entities\dto\Commodity.java
+D:\work\cloud2020\cloud-api-commons\src\main\java\com\atguigu\springcloud\entities\dto\Order.java
+D:\work\cloud2020\cloud-api-commons\src\main\java\com\atguigu\springcloud\entities\enums\HytrixEnum.java
+D:\work\cloud2020\cloud-api-commons\src\main\java\com\atguigu\springcloud\entities\TestEnum.java
+D:\work\cloud2020\cloud-api-commons\src\main\java\com\atguigu\springcloud\entities\CommonResult.java
+D:\work\cloud2020\cloud-api-commons\src\main\java\com\atguigu\springcloud\entities\Shop.java

@@ -3,7 +3,7 @@
 <mapper namespace="com.atguigu.springcloud.dao.PaymentDao">
 
     <insert id="create" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
-        insert into payment (serial) values (#{serial});
+        insert into td_payment (serial) values (#{serial});
     </insert>
 
     <resultMap id="BaseResultMap" type="Payment">
@@ -11,7 +11,7 @@
         <result column="serial" property="serial" />
     </resultMap>
     <select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">
-        select * from payment where id = #{id};
+        select * from td_payment where id = #{id};
     </select>
 
 

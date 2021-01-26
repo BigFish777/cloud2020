@@ -14,7 +14,8 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
  * \* Time: 13:31
  * \
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})//屏蔽数据源的扫描配置
+//@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})//屏蔽数据源的扫描配置
+@SpringBootApplication
 @EnableEurekaClient
 @RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = MySelfRule.class)
 public class RunApp80 {

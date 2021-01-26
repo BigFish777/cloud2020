@@ -13,7 +13,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * \* Date: 2020/6/24
  * \* Time: 11:36
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})//屏蔽数据源的扫描配置
+@SpringBootApplication
 @EnableConfigServer
 public class RunConfig3344 {
     public static void main(String[] args) {

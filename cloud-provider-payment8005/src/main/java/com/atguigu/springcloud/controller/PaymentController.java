@@ -23,7 +23,7 @@ public class PaymentController {
     private String serverPort;
 
     @GetMapping("/payment/uuid")
-    public CommonResult<String> getPaymentById(){
+    public CommonResult getPaymentById(){
         log.info("进入/payment/uuid");
         return new CommonResult(200,"查询成功,ConsulServerPort:"+serverPort, UUID.randomUUID().toString());
     }

@@ -50,7 +50,7 @@ public class PaymentController {
 
     @GetMapping("/payment/lb")
     public CommonResult getPaymentlb(){
-        return new CommonResult<String>(200,"成功","8002");
+        return new CommonResult(200,"成功","8002");
     }
 
     @GetMapping("/payment/timeout")
@@ -60,11 +60,11 @@ public class PaymentController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return new CommonResult<String>(200,"成功",null);
+        return new CommonResult(200,"成功",null);
     }
 
     @GetMapping("/get/token")
     public CommonResult getToken(){
-        return new CommonResult<String>(200,"成功", UUID.randomUUID().toString());
+        return new CommonResult(200,"成功", UUID.randomUUID().toString());
     }
 }

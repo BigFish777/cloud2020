@@ -44,7 +44,7 @@ public class PaymentController {
     }
 
     @GetMapping("/payment/CircuitBreaker/{id}")
-    public String PaymentCircuitBreaker(@PathVariable("id") Long id){
-        return paymentService.PaymentCircuitBreaker(id);
+    public String paymentCircuitBreaker(@PathVariable("id") Long id){
+        return paymentService.paymentCircuitBreaker(id);
     }
 }

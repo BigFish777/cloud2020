@@ -29,13 +29,13 @@ public class OrderController {
     private RestTemplate restTemplate;
 
     @GetMapping("/consumer/payment/create")
-    public CommonResult<Parameter> create(Payment payment){
+    public CommonResult create(Payment payment){
         log.info("consumer:添加<"+payment+">成功!");
         return restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment,CommonResult.class);
     }
 
     @GetMapping("/consumer/payment/get/{id}")
-    public CommonResult<Parameter> getPayment(@PathVariable("id") Long id){
+    public CommonResult getPayment(@PathVariable("id") Long id){
         log.info("consumer:查询<Payment>成功!");
         return restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id,CommonResult.class);
     }

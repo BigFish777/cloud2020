@@ -27,6 +27,9 @@
         <module>cloud-gateway-gateway9527</module>
         <module>cloud-config-center3344</module>
         <module>cloud-config-client3355</module>
+        <module>cloud-stream-rabbitmq-provider8801</module>
+        <module>cloud-stream-rabbitmq-consumer8802</module>
+        <module>cloud-stream-rabbitmq-consumer8803</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -40,6 +43,7 @@
     <mysql.version>8.0.18</mysql.version>
     <druid.version>1.1.16</druid.version>
     <mybatis.spring.boot.version>2.1.1</mybatis.spring.boot.version>
+    <mybatis-plus.version>3.4.0</mybatis-plus.version>
   </properties>
 
   <!--父工程使用 dependencyManagement 限定jar包的版本 ，子项目 dependencies 如果不指定版本号则使用父工程的版本-->
@@ -86,6 +90,11 @@
         <artifactId>mybatis-spring-boot-starter</artifactId>
         <version>${mybatis.spring.boot.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>3.0.5</version>
+      </dependency>
       <!--junit-->
       <dependency>
         <groupId>junit</groupId>
@@ -129,17 +138,26 @@
 
   <build>
       <plugins>
-          <plugin>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-maven-plugin</artifactId>
-              <executions>
-                <execution>
-                  <goals>
-                    <goal>repackage</goal>
-                  </goals>
-                </execution>
-              </executions>
-          </plugin>
+<!--          <plugin>-->
+<!--              <groupId>org.springframework.boot</groupId>-->
+<!--              <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--              <executions>-->
+<!--                <execution>-->
+<!--                  <goals>-->
+<!--                    <goal>repackage</goal>-->
+<!--                  </goals>-->
+<!--                </execution>-->
+<!--              </executions>-->
+<!--          </plugin>-->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.6.0</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>
       </plugins>
   </build>
 

@@ -34,19 +34,19 @@ public class OrderFeignHystrixController {
 //    @HystrixCommand(fallbackMethod = "getPaymentTimeoutReserve",commandProperties = {
 //            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1500")
 //    })
-//    @HystrixCommand
+    @HystrixCommand
     @GetMapping("/consumer/payment/timeout")
     public CommonResult getPaymentTimeout(){
-//        int i = 1/0;
         return paymentFeignHystrixService.getPaymentTimeout();
     }
-//
-//    /**
-//     * 用来降级的备胎方法
-//     */
-//    public CommonResult getPaymentTimeoutReserve(){
-//        log.info("进入全局备胎服务---成功降级！傻逼");
-//        return new CommonResult<String>(200,Thread.currentThread().getName()+"--全局备胎启动.start---(┬＿┬)",null);
-//    }
+
+
+    /**
+     * 用来降级的备胎方法
+     */
+    public CommonResult getPaymentTimeoutReserve(){
+        log.info("进入全局备胎服务---成功降级！");
+        return CommonResult.success(Thread.currentThread().getName()+"--全局备胎启动.start---(┬＿┬)",null);
+    }
 
 }

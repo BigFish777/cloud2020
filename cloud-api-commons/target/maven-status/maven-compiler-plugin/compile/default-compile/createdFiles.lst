@@ -1,0 +1,6 @@
+com\atguigu\springcloud\entities\dto\Commodity.class
+com\atguigu\springcloud\entities\TestEnum.class
+com\atguigu\springcloud\entities\Shop.class
+com\atguigu\springcloud\entities\dto\Order.class
+com\atguigu\springcloud\entities\Payment.class
+com\atguigu\springcloud\entities\CommonResult.class

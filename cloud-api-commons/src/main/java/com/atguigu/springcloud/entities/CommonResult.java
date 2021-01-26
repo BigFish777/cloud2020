@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * \* Created with IntelliJ IDEA.
  * \* User: 一颗小土豆
@@ -11,16 +13,25 @@ import lombok.NoArgsConstructor;
  * \* Time: 11:56
  * \* Json返回体
  */
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class CommonResult<T> {
-    //404 not_font
+@AllArgsConstructor
+@Data
+public class CommonResult {
     private Integer code;
     private String message;
-    private T data;
+    private Object data;
 
-    public CommonResult(Integer code,String message){
-        this(code,message,null);
+    public static CommonResult success(String message, Object data){
+        return new CommonResult(200,message,data);
     }
+
+    public static CommonResult error(String message){
+        return new CommonResult(500,message);
+    }
+
+    public CommonResult(Integer code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
 }

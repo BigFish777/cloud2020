@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://39.105.27.58/spring_cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
     username: root
-    password: lovehxp521..
+    password: root
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -23,8 +23,8 @@ eureka:
     register-with-eureka: true
     service-url:
       # 设置与eureka server交互的地址检查服务和注册服务都需要这个以来的地址
-      # defaultZone: http://localhost:7001/eureka/
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      defaultZone: http://localhost:7001/eureka/
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
   instance:
     instance-id: payment8001 #修改 eureka的Status 名字
     prefer-ip-address: true #开启访问路径的ip显示

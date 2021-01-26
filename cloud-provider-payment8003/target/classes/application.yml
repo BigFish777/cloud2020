@@ -10,7 +10,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://39.105.27.58/spring_cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
     username: root
-    password: lovehxp521..
+    password: root
   cloud:
     zookeeper:
       connect-string: 39.105.27.58:2181

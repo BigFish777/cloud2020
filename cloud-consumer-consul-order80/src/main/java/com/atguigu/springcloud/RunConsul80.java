@@ -15,7 +15,8 @@ import org.springframework.cloud.netflix.ribbon.RibbonClients;
  * \* Time: 14:49
  * \
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})//屏蔽数据源的扫描配置
+//@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})//屏蔽数据源的扫描配置
+@SpringBootApplication
 @EnableDiscoveryClient
 @RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = MySelfRule.class)
 public class RunConsul80 {
